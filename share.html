@@ -7,13 +7,13 @@
 <body>
 </body>
 <script>
-    var userid = GetQueryString("userid");
-    const id = GetQueryString("id");
-    const type = GetQueryString("type");
-    userid=userid==null?1:userid;
-    // var userid = "1";
-    // const id = 184;
-    // const type = 0;
+    // var userid = GetQueryString("userid");
+    // const id = GetQueryString("id");
+    // const type = GetQueryString("type");
+    // userid=userid==null?1:userid;
+    var userid = "1";
+    const id = 184;
+    const type = 0;
     console.log(userid);
     console.log(id);
     console.log(type);
@@ -52,13 +52,14 @@
     } else if (browser.versions.android) {
         console.log("android")
         window.location.href = androidUri;
-    } else if (browser.versions.weixin) {
-        window.location.href = androidUri;
-    } else if (browser.versions.qq) {
-        window.location.href = androidUri;
-    } else {
-        console.log("default")
     }
+    // else if (browser.versions.weixin) {
+    //     window.location.href = androidUri;
+    // } else if (browser.versions.qq) {
+    //     window.location.href = androidUri;
+    // } else {
+    //     console.log("default")
+    // }
 
     function load() {
         console.log("onload");
