@@ -47,13 +47,13 @@
 //        weixin: ua.match(/MicroMessenger/i)=="micromessenger",
         language: (navigator.browserLanguage || navigator.language).toLowerCase()
     };
-    if (browser.versions.ios) {
-
-    } else if (browser.versions.android) {
-        alert("android");
-        console.log("android")
-        window.location.href = androidUri;
-    }
+    // if (browser.versions.ios) {
+    //
+    // } else if (browser.versions.android) {
+    //     alert("android");
+    //     console.log("android")
+    //     window.location.href = androidUri;
+    // }
     // else if (browser.versions.weixin) {
     //     window.location.href = androidUri;
     // } else if (browser.versions.qq) {
@@ -61,6 +61,9 @@
     // } else {
     //     console.log("default")
     // }
+
+
+    window.location.href = downloadUrl;
 
     function load() {
         console.log("onload");
