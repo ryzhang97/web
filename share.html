@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>黑森林特制</title>
+</head>
+<body>
+</body>
+<script>
+    var userid = GetQueryString("userid");
+    const id = GetQueryString("id");
+    const type = GetQueryString("type");
+    userid=userid==null?1:userid;
+    // var userid = "1";
+    // const id = 184;
+    // const type = 0;
+    console.log(userid);
+    console.log(id);
+    console.log(type);
+    const tabs = ["formula/formulaDetail", "product/productDetail"];
+    const downloadUrl = "http://39.104.56.196/admin/static/res/html/advertisement/dealer.html?userId=" + userid;
+    const androidScheme = "cloudcoffee://";
+    const androidUri = androidScheme + tabs[type] + "?goodsId=" + id;
+    var browser = {
+        versions: function () {
+            var u = navigator.userAgent;
+            var app = navigator.appVersion;
+            return {
+                trident: u.indexOf('Trident') > -1, /*IE内核*/
+                presto: u.indexOf('Presto') > -1, /*opera内核*/
+                webKit: u.indexOf('AppleWebKit') > -1, /*苹果、谷歌内核*/
+                gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, /*火狐内核*/
+                mobile: !!u.match(/AppleWebKit.*Mobile.*/), /*是否为移动终端*/
+                ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), /*ios终端*/
+                android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, /*android终端或者uc浏览器*/
+                iPhone: u.indexOf('iPhone') > -1, /*是否为iPhone或者QQHD浏览器*/
+                iPad: u.indexOf('iPad') > -1, /*是否iPad*/
+                webApp: u.indexOf('Safari') == -1, /*是否web应该程序，没有头部与底部*/
+                souyue: u.indexOf('souyue') > -1,
+                superapp: u.indexOf('superapp') > -1,
+                weixin: u.toLowerCase().indexOf('micromessenger') > -1,
+                qq: u.match(/QQ/i) == "qq",
+                Safari: u.indexOf('Safari') > -1
+            };
+        }(),
+
+//        weixin: ua.match(/MicroMessenger/i)=="micromessenger",
+        language: (navigator.browserLanguage || navigator.language).toLowerCase()
+    };
+    if (browser.versions.ios) {
+
+    } else if (browser.versions.android) {
+        console.log("android")
+        window.location.href = androidUri;
+    } else if (browser.versions.weixin) {
+        window.location.href = androidUri;
+    } else if (browser.versions.qq) {
+        window.location.href = androidUri;
+    } else {
+        console.log("default")
+    }
+
+    function load() {
+        console.log("onload");
+//        alert("onload");
+    }
+
+    window.onload = load;
+
+    function GetQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return null;
+    }
+</script>
+</html>
